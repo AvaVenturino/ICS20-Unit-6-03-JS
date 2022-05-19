@@ -14,14 +14,30 @@ if (navigator.serviceWorker) {
 }
 
 /**
- * Input
- */
-function myButtonClicked() {
-  if (localStorage.updateCookieCount) {
-    localStorage.updateCookieCount = Number(localStorage.updateCookieCount) + 1;
-  } else {
-    localStorage.updateCookieCount = +1;
+ * Get API info.
+*/
+// code from: https://www.youtube.com/watch?v=670f71LTWpM
+
+/**
+ * Get API info.
+*/
+// code from: https://www.youtube.com/watch?v=670f71LTWpM
+
+const getWeather = async (URLAddress) => {
+  try {
+    const request = await fetch(URLAddress)
+    const jsonData = await request.json()
+    var tempK = jsonData.main.temp
+    var tempC = 0
+    console.log(jsonData.main.temp)
+    if (request.status >= 200 && request.status < 400) {
+ }
+    tempC = (tempK - 273.15)
+    document.getElementById("api-weather").innerHTML =
+    'The current weather is ' + tempC.toFixed(2)
+  } catch (err) {
+    console.log(err)
   }
-  document.getElementById("answer").innerHTML =
-    "You have clicked the cookie " + localStorage.updateCookieCount + " times";
 }
+
+getWeather("https://api.openweathermap.org/data/2.5/weather?lat=45.4211435&lon=-75.6900574&appid=fe1d80e1e103cff8c6afd190cad23fa5")
