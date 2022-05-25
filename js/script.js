@@ -22,8 +22,7 @@ if (navigator.serviceWorker) {
  * Get API info.
  */
 // code from: https://www.youtube.com/watch?v=670f71LTWpM
-
-const getWeather = async (URLAddress) => { // Grabs URL
+const getWeather = async (URLAddress) => {
   try {
     const request = await fetch(URLAddress);
     const jsonData = await request.json();
