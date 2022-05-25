@@ -23,7 +23,7 @@ if (navigator.serviceWorker) {
  */
 // code from: https://www.youtube.com/watch?v=670f71LTWpM
 
-const getWeather = async (URLAddress) => {
+const getWeather = async (URLAddress) => { // Grabs URL
   try {
     const request = await fetch(URLAddress);
     const jsonData = await request.json();
@@ -34,16 +34,16 @@ const getWeather = async (URLAddress) => {
 
     console.log(jsonData.weather);
     document.getElementById("api-image").innerHTML =
-      "<img src='http://openweathermap.org/img/wn/" + 
-        image +
+      "<img src='http://openweathermap.org/img/wn/" +
+      image +
       "@2x.png' alt='Weather Icon' width='10%'><br><h5>";
-    ">"
+    (">");
 
     if (request.status >= 200 && request.status < 400) {
     }
-    
+
     // Calculate from Kalvin to Celsius
-    tempC = tempK - 273.15
+    tempC = tempK - 273.15;
 
     document.getElementById("api-weather").innerHTML =
       "The current weather is " + tempC.toFixed(2) + " °C";
@@ -52,4 +52,5 @@ const getWeather = async (URLAddress) => {
   }
 };
 getWeather(
-  "https://api.openweathermap.org/data/2.5/weather?lat=45.4211435&lon=-75.6900574&appid=fe1d80e1e103cff8c6afd190cad23fa5");
+  "https://api.openweathermap.org/data/2.5/weather?lat=45.4211435&lon=-75.6900574&appid=fe1d80e1e103cff8c6afd190cad23fa5"
+);
