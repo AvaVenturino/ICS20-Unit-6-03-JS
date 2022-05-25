@@ -29,19 +29,20 @@ const getWeather = async (URLAddress) => {
     const jsonData = await request.json()
     var tempK = jsonData.main.temp
     var tempC = 0
-    console.log(jsonData.main.temp)
+    const feeling = jsonData.weather[0]
+    const image = feeling.icon
+
+  console.log(jsonData.weather)
+  document.getElementById("api-image").innerHTML =
+    "<img src='http://openweathermap.org/img/wn/" + image + "@2x.png' alt='Weather Icon' width='10%'><br><h5>"
+      '>'
+    
     if (request.status >= 200 && request.status < 400) {
  }
     tempC = (tempK - 273.15)
     
     document.getElementById("api-weather").innerHTML =
-    'The current weather is ' + tempC.toFixed(2)
-
-  console.log(jsonData.weather)
-  document.getElementById("api-image").innerHTML =
-    '<img src="' + icon + 
-      '" alt="API image" class="center" ' +
-      '>'
+    'The current weather is ' + tempC.toFixed(2) + ' °C'
    } catch (err) {
     console.log(err)
   }
